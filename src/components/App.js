@@ -98,6 +98,7 @@ function App() {
     <AppContext.Provider value={contextValue}>
       <div className="App">
         <h1>The YOLO! Game</h1>
+        <p>How many points can you win in 5 rounds?</p>
         <Score />
         <Status />
         <Actions />

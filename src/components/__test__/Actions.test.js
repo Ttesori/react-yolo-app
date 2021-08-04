@@ -3,6 +3,11 @@ import Actions from '../Actions';
 import AppContext from "../../contexts/app-context";
 import userEvent from '@testing-library/user-event';
 
+const LABELS = {
+  inputEl: 'How many points?',
+  playEl: 'Play'
+}
+
 describe('Actions', () => {
   test('renders Actions if game is going on', () => {
     const testContext = { gameOver: false }
@@ -11,7 +16,7 @@ describe('Actions', () => {
         <Actions />
       </AppContext.Provider>
     );
-    expect(screen.getByLabelText('How many points?')).toBeInTheDocument();
+    expect(screen.getByLabelText(LABELS.inputEl)).toBeInTheDocument();
     expect(screen.getAllByRole('radio').length).toBe(2);
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
@@ -24,8 +29,8 @@ describe('Actions', () => {
       </AppContext.Provider>
     );
 
-    userEvent.type(screen.getByLabelText('How many points?'), '10');
-    expect(screen.getByLabelText('How many points?')).toHaveValue(10);
+    userEvent.type(screen.getByLabelText(LABELS.inputEl), '10');
+    expect(screen.getByLabelText(LABELS.inputEl)).toHaveValue(10);
   });
 
   test('cannot enter num > than points into points field', () => {
@@ -35,7 +40,7 @@ describe('Actions', () => {
         <Actions />
       </AppContext.Provider>
     );
-    const inputEl = screen.getByLabelText('How many points?');
+    const inputEl = screen.getByLabelText(LABELS.inputEl);
     userEvent.type(inputEl, '20');
     expect(inputEl).toHaveValue(null);
   });
@@ -47,7 +52,7 @@ describe('Actions', () => {
         <Actions />
       </AppContext.Provider>
     );
-    const inputEl = screen.getByLabelText('How many points?');
+    const inputEl = screen.getByLabelText(LABELS.inputEl);
     userEvent.type(inputEl, 'hi');
     expect(inputEl).toHaveValue(null);
   });
@@ -59,7 +64,7 @@ describe('Actions', () => {
         <Actions />
       </AppContext.Provider>
     );
-    const inputEl = screen.getByLabelText('How many points?');
+    const inputEl = screen.getByLabelText(LABELS.inputEl);
     userEvent.type(inputEl, '-10');
     expect(inputEl).toHaveValue(0);
   });
@@ -89,7 +94,17 @@ describe('Actions', () => {
   });
 
   test('points field clears after clicking play', () => {
-
+    const testContext = { gameOver: false, points: 100, playRound: () => console.log(true) }
+    render(
+      <AppContext.Provider value={testContext}>
+        <Actions />
+      </AppContext.Provider>
+    );
+    const inputEl = screen.getByLabelText(LABELS.inputEl);
+    userEvent.type(inputEl, '10');
+    expect(inputEl).toHaveValue(10);
+    userEvent.click(screen.getByRole('button'));
+    expect(inputEl).toHaveValue(null);
   });
 
 });
