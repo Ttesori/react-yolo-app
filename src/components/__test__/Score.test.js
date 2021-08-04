@@ -7,8 +7,8 @@ describe('Score', () => {
     render(<App><Score /></App>);
   });
 
-  test('renders default action', () => {
+  test('renders default text', () => {
     render(<App><Score /></App>);
-    expect(screen.getByText('100')).toBeInTheDocument();
+    expect(screen.getByText(/Score:/)).toBeInTheDocument();
   });
 });
