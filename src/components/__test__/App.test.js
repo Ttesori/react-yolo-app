@@ -1,5 +1,13 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from '../App';
+import userEvent from '@testing-library/user-event';
+
+const LABELS = {
+  inputEl: 'How many points?',
+  playEl: 'Play',
+  finalText: /Your Final Score/,
+  roundTextPattern: /Round 1: -?\+?(\d)* \| Total: (\d)*/
+}
 
 describe('App', () => {
   it('renders App component', () => {
@@ -7,19 +15,44 @@ describe('App', () => {
   });
 
   it('increases round after play button is pressed', () => {
-    expect(true).toBe(false);
+    render(<App />);
+    const roundNum = screen.getByText(/Round 1 of 5/);
+    expect(roundNum).toBeInTheDocument();
+    userEvent.click(screen.getByRole('button'));
+    const round2Num = screen.getByText(/Round 2 of 5/);
+    expect(round2Num).toBeInTheDocument();
   });
 
   it('ends game after 5 rounds', () => {
-    expect(true).toBe(false);
-  });
-
-  it('ends game after points drops to zero', () => {
-    expect(true).toBe(false);
+    render(<App />);
+    const inputEl = screen.getByLabelText(LABELS.inputEl);
+    const playEl = screen.getByText(LABELS.playEl);
+    // Round 1
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    // Round 2
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    // Round 3
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    // Round 4
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    // Round 5
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    expect(screen.getByText(LABELS.finalText)).toBeInTheDocument();
   });
 
   it('adds round info to history', () => {
-    expect(true).toBe(false);
+    render(<App />);
+    const inputEl = screen.getByLabelText(LABELS.inputEl);
+    const playEl = screen.getByText(LABELS.playEl);
+    // Round 1
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    expect(screen.getByText(LABELS.roundTextPattern)).toBeInTheDocument();
   });
   it('adds score to scoreboard', () => {
     expect(true).toBe(false);

@@ -8,7 +8,6 @@ export default function Actions() {
 
   const validateValue = (e) => {
     const inputValue = parseInt(e.target.value);
-    console.log(inputValue);
     if (inputValue <= 0) return setValue(0);
     if (inputValue > 0 && inputValue <= points) {
       return setValue(inputValue);

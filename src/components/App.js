@@ -27,7 +27,7 @@ function App() {
   const [scoreboard, setScoreboard] = useState(INITIAL_STATE.scoreboard);
 
   const restartGame = () => {
-    console.log('Restarting game...');
+    //console.log('Restarting game...');
     setGameOver(INITIAL_STATE.gameOver);
     setPoints(INITIAL_STATE.points);
     setRound(INITIAL_STATE.round);
@@ -36,23 +36,22 @@ function App() {
   }
 
   const playRound = (playerGuess, playerBet) => {
-    console.log(playerGuess, playerBet);
     // Set winning number
     const winningNumber = Math.ceil(Math.random() * 2);
-    console.log(winningNumber);
+    //console.log(winningNumber);
     setWinningNum(winningNumber);
     setPlayerNum(playerGuess);
 
     // If no player bet, choose random amount
     if (!playerBet) {
       playerBet = Math.ceil(Math.random() * points)
-      console.log(playerBet);
+      //console.log(playerBet);
     }
 
     // Determine if player wins
     let newPoints = 0;
     const won = winningNumber === playerGuess;
-    console.log(won);
+    //console.log(won);
     if (won) {
       // Add points
       newPoints = points + playerBet;

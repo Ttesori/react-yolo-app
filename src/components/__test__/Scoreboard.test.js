@@ -2,6 +2,11 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 import Scoreboard from '../Scoreboard';
 import AppContext from "../../contexts/app-context";
+import { dateHelper } from "../../utils/utils";
+
+const LABELS = {
+  emptyText: /once you complete a game, your previous scores will appear here\./i
+}
 
 describe('Scoreboard', () => {
   test('renders Scoreboard component with no length', () => {
@@ -11,7 +16,7 @@ describe('Scoreboard', () => {
         <Scoreboard />
       </AppContext.Provider>
     );
-    expect(screen.getByText(/once you complete a game, your previous scores will appear here\./i)).toBeInTheDocument();
+    expect(screen.getByText(LABELS.emptyText)).toBeInTheDocument();
   });
 
   test('renders Scoreboard component with > 0 length', () => {
@@ -21,7 +26,10 @@ describe('Scoreboard', () => {
         <Scoreboard />
       </AppContext.Provider>
     );
-    expect(screen.getByText(/1628090030191: 480 \| percent change: 48\.00%/i)).toBeInTheDocument();
+    screen.debug();
+    expect(screen.getByText(new RegExp(dateHelper(testContext.scoreboard.date)))).toBeInTheDocument();
+    expect(screen.getByText(testContext.scoreboard.score)).toBeInTheDocument();
+    expect(screen.getByText(/-52%/)).toBeInTheDocument();
   });
 
 });
