@@ -27,8 +27,8 @@ describe('Scoreboard', () => {
       </AppContext.Provider>
     );
     screen.debug();
-    expect(screen.getByText(new RegExp(dateHelper(testContext.scoreboard.date)))).toBeInTheDocument();
-    expect(screen.getByText(testContext.scoreboard.score)).toBeInTheDocument();
+    expect(screen.getByText(new RegExp(dateHelper(testContext.scoreboard[0].date)))).toBeInTheDocument();
+    expect(screen.getByText(testContext.scoreboard[0].score)).toBeInTheDocument();
     expect(screen.getByText(/-52%/)).toBeInTheDocument();
   });
 

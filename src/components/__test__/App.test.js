@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import App from '../App';
 import userEvent from '@testing-library/user-event';
+import { dateHelper } from "../../utils/utils";
 
 const LABELS = {
   inputEl: 'How many points?',
@@ -54,8 +55,27 @@ describe('App', () => {
     userEvent.click(playEl);
     expect(screen.getByText(LABELS.roundTextPattern)).toBeInTheDocument();
   });
-  it('adds score to scoreboard', () => {
-    expect(true).toBe(false);
+  it('adds score to scoreboard after game', () => {
+    render(<App />);
+    const inputEl = screen.getByLabelText(LABELS.inputEl);
+    const playEl = screen.getByText(LABELS.playEl);
+    // Round 1
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    // Round 2
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    // Round 3
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    // Round 4
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    // Round 5
+    userEvent.type(inputEl, '1');
+    userEvent.click(playEl);
+    const now = dateHelper(Date.now());
+    expect(screen.getAllByText(new RegExp(now)).length).toBeGreaterThan(0);
   });
 });
 
