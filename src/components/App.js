@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import AppContext from '../contexts/app-context';
 import './styles/App.css';
+import logo from '../img/logo.svg';
 import Status from './Status';
 import Actions from './Actions';
 import Score from './Score';
@@ -96,13 +97,18 @@ function App() {
   return (
     <AppContext.Provider value={contextValue}>
       <div className="App">
-        <h1>The YOLO! Game</h1>
-        <p>How many points can you win in 5 rounds?</p>
+        <header className="yolo-header">
+          <h1 className="yolo-logo"><img src={logo} alt="The YOLO Game! logo" /></h1>
+          <p>How many points can you win in 5 rounds?</p>
+        </header>
         <Score />
         <Status />
         <Actions />
         <History />
         <Scoreboard />
+        <footer>
+          Written by Toni!
+        </footer>
       </div>
     </AppContext.Provider>
   );

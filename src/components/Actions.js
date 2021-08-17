@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import AppContext from "../contexts/app-context";
+import './styles/Actions.css';
 
 export default function Actions() {
   const { gameOver, restartGame, playRound, points } = useContext(AppContext);
@@ -36,12 +37,12 @@ export default function Actions() {
     <div className="actions">
       <form>
         <fieldset>
-          <label htmlFor="points">How many points?</label>
-          <input type="number" id="points" value={value} onChange={validateValue} placeholder="Enter number of points to wager" min="0" max={points} />
+          <label htmlFor="points"># of points to wager: </label>
+          <input type="number" id="points" value={value} onChange={validateValue} placeholder={`From 0 to ${points}`} min="0" max={points} />
         </fieldset>
         <fieldset>
-          <p>
-            Which number will win?
+          Which number will win?
+          <span className="actions--radio-group">
             <label>
               <input
                 type="radio"
@@ -62,7 +63,7 @@ export default function Actions() {
               />
               2
             </label>
-          </p>
+          </span>
         </fieldset>
         <button onClick={validatePlay}>Play</button>
 
