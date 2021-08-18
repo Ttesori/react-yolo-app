@@ -22,3 +22,24 @@ h3 {
 .yolo-header p {
   display: none;
 }
+
+.yolo-footer {
+  background: var(--purple-gradient);
+  padding: 0 0 1rem;
+  position: relative;
+  margin-top: 2rem;
+  z-index: 10;
+}
+
+.yolo-footer::before {
+  transform: skewY(2deg);
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20px;
+  transform: skewY(2deg);
+  height: 30px;
+  background: var(--purple-gradient);
+  z-index: -1;
+}

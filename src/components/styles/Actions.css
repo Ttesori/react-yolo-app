@@ -1,5 +1,5 @@
 .actions {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .actions fieldset {
@@ -13,7 +13,7 @@
   min-width: 200px;
   margin-top: 0.5rem;
   background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 223, 108, 0.6);
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
   text-align: center;
@@ -23,12 +23,49 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
-.actions--radio-group label {
-  padding: 0 1rem;
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
 }
 
-.actions input[type='radio'] {
-  margin-right: 0.5rem;
+.actions--radio-group {
+  display: grid;
+  grid-template-columns: min-content auto;
+  max-width: 100px;
+  grid-gap: 0.35rem;
+}
+
+.radio--label {
+  font-size: 1.15rem;
+  line-height: 1;
+  text-align: left;
+  padding-left: 0.25rem;
+}
+
+.radio--input {
+  display: flex;
+  align-items: center;
+}
+
+.radio--input input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio--input input:checked + .radio--control {
+  background: radial-gradient(#fff 40%, var(--color-dark) 45%);
+}
+
+.radio--control {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 223, 108, 0.7);
+  transform: translateY(-0.2rem);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .actions--play-btn {
@@ -36,9 +73,10 @@
   color: #fff;
   font-family: var(--font-accent);
   font-size: 1.5rem;
-  padding: 0.5rem 1rem 0.25rem;
+  padding: 0.75rem 1.5rem 0.5rem;
   line-height: 1;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   text-shadow: var(--text-shadow);
+  box-shadow: var(--box-shadow);
 }

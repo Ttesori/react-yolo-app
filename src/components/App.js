@@ -106,8 +106,8 @@ function App() {
         <Actions />
         <History />
         <Scoreboard />
-        <footer>
-          Written by Toni!
+        <footer className="yolo-footer">
+          <p>Written by Toni!</p>
         </footer>
       </div>
     </AppContext.Provider>

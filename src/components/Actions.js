@@ -41,29 +41,40 @@ export default function Actions() {
           <input type="number" id="points" value={value} onChange={validateValue} placeholder={`From 0 to ${points}`} min="0" max={points} />
         </fieldset>
         <fieldset>
-          Which number will win?
-          <span className="actions--radio-group">
-            <label>
-              <input
-                type="radio"
-                name="number"
-                value="1"
-                checked={number === 1}
-                onChange={handleNumberChange}
-              />
-              1
+          <label>Which number will win?</label>
+          <div className="radio-group">
+            <label className="actions--radio-group">
+              <span className="radio--input">
+                <input
+                  type="radio"
+                  name="number"
+                  value="1"
+                  checked={number === 1}
+                  onChange={handleNumberChange}
+                />
+                <span className="radio--control"></span>
+              </span>
+              <span className="radio--label">
+                1
+              </span>
             </label>
-            <label>
-              <input
-                type="radio"
-                name="number"
-                value="2"
-                checked={number === 2}
-                onChange={handleNumberChange}
-              />
-              2
+            <label className="actions--radio-group">
+              <span className="radio--input">
+                <input
+                  type="radio"
+                  name="number"
+                  value="2"
+                  checked={number === 2}
+                  onChange={handleNumberChange}
+                />
+                <span className="radio--control"></span>
+              </span>
+              <span className="radio--label">
+                2
+              </span>
             </label>
-          </span>
+          </div>
+
         </fieldset>
         <button onClick={validatePlay} className="actions--play-btn">Play</button>
 
