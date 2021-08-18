@@ -22,3 +22,23 @@
 .actions input[type='number']::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
+
+.actions--radio-group label {
+  padding: 0 1rem;
+}
+
+.actions input[type='radio'] {
+  margin-right: 0.5rem;
+}
+
+.actions--play-btn {
+  background: var(--purple-gradient);
+  color: #fff;
+  font-family: var(--font-accent);
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem 0.25rem;
+  line-height: 1;
+  border: 0;
+  border-radius: 1rem;
+  text-shadow: var(--text-shadow);
+}

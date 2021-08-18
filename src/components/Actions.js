@@ -37,7 +37,7 @@ export default function Actions() {
     <div className="actions">
       <form>
         <fieldset>
-          <label htmlFor="points"># of points to wager: </label>
+          <label htmlFor="points">How many points to wager? </label>
           <input type="number" id="points" value={value} onChange={validateValue} placeholder={`From 0 to ${points}`} min="0" max={points} />
         </fieldset>
         <fieldset>
@@ -65,7 +65,7 @@ export default function Actions() {
             </label>
           </span>
         </fieldset>
-        <button onClick={validatePlay}>Play</button>
+        <button onClick={validatePlay} className="actions--play-btn">Play</button>
 
       </form>
     </div>
